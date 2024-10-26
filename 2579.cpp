@@ -1,26 +1,30 @@
 #include <iostream>
+#include <vector>
 
-int RecurStair(int arr[], int num_stair, int count, int score, int curr) {
-  if (curr == num_stair - 1) {
-    score = score + arr[curr];
+int Count(std::vector<int>& v) {
+  int n = v.size();
+  std::vector<int> dp(n, 0);
+
+  dp[0] = v[0];
+  dp[1] = v[0] + v[1];
+  dp[2] = v[2] + std::max(v[1], v[0]);
+
+  for (int i = 3; i < n; i++) {
+    dp[i] = v[i] + std::max(dp[i - 2], dp[i - 3] + v[i - 1]);
   }
-
-  if (curr == num_stair - 2 && count == 0)
-    return RecurStair(arr, num_stair, count, score, curr + 1);
+  return dp[n - 1];
 }
 
 int main(void) {
-  int num_stair = 0;
-  std::cin >> num_stair;
+  int n;
+  std::cin >> n;
 
-  int arr[num_stair];
-  for (int i = 0; i < num_stair; i++) std::cin >> arr[i];
+  std::vector<int> v(n, 0);
+  for (int i = 0; i < n; i++) {
+    std::cin >> v[i];
+  }
 
-  int size = sizeof(arr) / sizeof(int);
-
-  int count = 0;
-  int score = 0;
-  int max_score = RecurStair(arr, num_stair, count, score, 0);
+  std::cout << Count(v) << '\n';
 
   return 0;
 }
