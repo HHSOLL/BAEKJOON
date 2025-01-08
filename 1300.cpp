@@ -17,7 +17,7 @@ int main(void) {
   while (start <= end) {
     int mid = (start + end) / 2;
 
-    int sum = 0;
+    long long sum = 0;
     for (int i = 1; i <= N; i++) {
       sum += std::min(mid / i, N);
     }
