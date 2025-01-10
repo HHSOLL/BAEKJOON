@@ -1,6 +1,5 @@
 #include <cmath>
 #include <iostream>
-#include <string>
 #include <vector>
 
 int main(void) {
