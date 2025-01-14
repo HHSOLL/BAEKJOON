@@ -2,18 +2,6 @@
 #include <iostream>
 #include <vector>
 
-void checkUnion(std::vector<int>& v, int a, int b) {
-  if (a == b) {
-    std::cout << "YES" << '\n';
-    return;
-  }
-
-  if (v[b] == a || v[a] == b)
-    std::cout << "YES" << '\n';
-  else
-    std::cout << "NO" << '\n';
-}
-
 int find(int x, std::vector<int>& parents) {
   if (x != parents[x]) {
     parents[x] = find(parents[x], parents);
