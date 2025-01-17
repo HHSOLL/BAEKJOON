@@ -43,16 +43,16 @@ void bellmanFord(int V, int E, int start, int end,
     }
   }
 
-  std::vector<std::vector<int>> adj(V);
-  for (auto [u, v, w] : edges) {
-    adj[u].push_back(v);
-  }
-
   std::vector<bool> inPositiveCycle(V, false);
   for (auto [u, v, w] : edges) {
     if (dist[u] != -INF && dist[u] - w + profit[v] > dist[v]) {
       inPositiveCycle[v] = true;
     }
+  }
+
+  std::vector<std::vector<int>> adj(V);
+  for (auto [u, v, w] : edges) {
+    adj[u].push_back(v);
   }
 
   bool positiveCycleAffectsEnd = false;
