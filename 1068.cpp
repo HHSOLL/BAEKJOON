@@ -3,11 +3,6 @@
 #include <queue>
 #include <vector>
 
-struct Node {
-  int parent = NULL;
-  int child = NULL;
-};
-
 void deleteLeafNode(std::vector<std::vector<int>>& tree, int deleteNode) {
   for (auto& child : tree[deleteNode]) {
     deleteLeafNode(tree, child);
