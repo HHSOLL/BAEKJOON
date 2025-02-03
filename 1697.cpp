@@ -4,21 +4,6 @@
 #include <queue>
 #include <vector>
 
-int count = 0;
-
-void search(int start, int target) {
-  if (start == target) {
-    std::cout << count << '\n';
-    return;
-  }
-
-  count++;
-
-  search(start - 1, target);
-  search(start + 1, target);
-  search(start * 2, target);
-}
-
 int main(void) {
   std::ios::sync_with_stdio(false);
   std::cin.tie(NULL);
